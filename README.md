@@ -13,7 +13,7 @@
 - [Author](#Author)
 - [Acknowledgments](#Acknowledgments)
 
-![Day-Planner](./Assets/Developer-Profile-Generator.PNG)
+![ Developer-Profile-Generator](./Assets/Developer-Profile-Generator.PNG)
 
 
 ## Description

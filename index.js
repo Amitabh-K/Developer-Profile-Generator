@@ -49,7 +49,7 @@ function init() {
                                 github: data.login,
                                 stars: stars,
                             }
-                            pdf.create(generateHTML(params)).toFile('./Profile.pdf', function (err, res) {
+                            pdf.create(generateHTML(params)).toFile('./profile.pdf', function (err, res) {
                                 if (err) throw (err);
                                 
                             })

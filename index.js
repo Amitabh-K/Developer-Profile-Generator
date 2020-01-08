@@ -51,9 +51,12 @@ async function gitHubData (queryUrl, repoStars) {
     let data = await axios.get(queryUrl);
     let GHProfileData = await axios.get(repoStars); // call to get the stars 
 
- 
-}
+    let GHStars = [];
+    for (repo of GHProfileData.data) {
+        GHStars.push(repo.GHStars_count);
+    }
 
+  }
 
 // try and catch statement that knows how to handle the situation that the github user has no stars, and takes that situation to set the stars to 0
     

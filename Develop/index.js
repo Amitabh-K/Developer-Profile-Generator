@@ -9,6 +9,9 @@ const conversion = convertFactory({
   converterPath: convertFactory.converters.PDF
 });
 
+const generateHTML = require('./generateHTML');
+
+
 const questions = [
     {
       type: 'input',

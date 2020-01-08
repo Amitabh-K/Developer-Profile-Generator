@@ -92,3 +92,15 @@ function validateColor(color) {
 }
 
 // generate the PDF and send it go the results folder in the same directory
+async function generatePDF(filename, html) {
+
+    const client = await puppeteer.launch();
+    const page = await client.newPage();
+
+    await page.setContent(html);
+    await page.pdf({path: `./results/${filename}.pdf`})
+    await client.close()
+    }
+
+
+init();

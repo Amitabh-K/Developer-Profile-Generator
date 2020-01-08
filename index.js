@@ -5,9 +5,32 @@ const puppeteer = require("puppeteer");
 const genHTML = require("./generateHTML");
 
 
+function init() {
+    startPDFGenerator();
+}
+
 
 // Take Username and Color as an input using inquirer
+async function startPDFGenerator () {
 
+    let username = await inquirer.prompt({
+        
+        message: "Please provide the Github username:  ",
+        name: "name"
+
+    });
+    
+    let color = await inquirer.prompt({
+        
+        name: "color",
+        message: "Using the arrow keys select the color:  ",
+        type: "list",
+        choices: ['green', 'pink', 'blue', 'red']
+        
+    });
+
+    
+}
 
 // Store Github  json and user input
 

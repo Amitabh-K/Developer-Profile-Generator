@@ -69,7 +69,14 @@ async function gitHubData (queryUrl, repoStars) {
 
 // try and catch statement that knows how to handle the situation that the github user has no stars, and takes that situation to set the stars to 0
     
-  
+    try {
+        feed.starsNum = GHStars.reduce((accum, current) => accum + current); 
+    }
+    catch (error) {
+        feed.starsNum = 0;
+    }
+    
+    return feed;
 }
 
 // function ties in the color list to the color list in provided generateHTML.js file

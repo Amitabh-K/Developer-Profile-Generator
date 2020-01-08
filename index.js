@@ -80,6 +80,15 @@ async function gitHubData (queryUrl, repoStars) {
 }
 
 // function ties in the color list to the color list in provided generateHTML.js file
+function validateColor(color) {
 
+    if (genHTML.colors.hasOwnProperty(color)) {
+        return color;
+    }
+    else {
+        console.log("This color is not preset, choosing default color green");
+        return 'green';
+    }
+}
 
 // generate the PDF and send it go the results folder in the same directory

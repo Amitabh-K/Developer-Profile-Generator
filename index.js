@@ -19,3 +19,9 @@ const questions = [{
     choices: ["green", "blue", "pink", "red"],
 }];
 
+init();
+function init() {
+    inquirer
+        .prompt(questions)
+       
+}

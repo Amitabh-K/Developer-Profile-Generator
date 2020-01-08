@@ -3,7 +3,7 @@ const colors = {
     wrapperBackground: "#E6E1C3",
     headerBackground: "#C1C72C",
     headerColor: "black",
-    photoBorderColor: "black"
+    photoBorderColor: "#black"
   },
   blue: {
     wrapperBackground: "#5F64D3",
@@ -25,7 +25,7 @@ const colors = {
   }
 };
 
-module.exports =function generateHTML(data, color) {
+function generateHTML(data) {
   return `<!DOCTYPE html>
 <html lang="en">
    <head>
@@ -52,7 +52,7 @@ module.exports =function generateHTML(data, color) {
          height: 100%;
          }
          .wrapper {
-         background-color: ${colors[color].wrapperBackground};
+         background-color: ${colors[data.color].wrapperBackground};
          padding-top: 100px;
          }
          body {
@@ -94,8 +94,8 @@ module.exports =function generateHTML(data, color) {
          display: flex;
          justify-content: center;
          flex-wrap: wrap;
-         background-color: ${colors[color].headerBackground};
-         color: ${colors[color].headerColor};
+         background-color: ${colors[data.color].headerBackground};
+         color: ${colors[data.color].headerColor};
          padding: 10px;
          width: 95%;
          border-radius: 6px;
@@ -106,7 +106,7 @@ module.exports =function generateHTML(data, color) {
          border-radius: 50%;
          object-fit: cover;
          margin-top: -75px;
-         border: 6px solid ${colors[color].photoBorderColor};
+         border: 6px solid ${colors[data.color].photoBorderColor};
          box-shadow: rgba(0, 0, 0, 0.3) 4px 1px 20px 4px;
          }
          .photo-header h1, .photo-header h2 {
@@ -147,8 +147,8 @@ module.exports =function generateHTML(data, color) {
          .card {
            padding: 20px;
            border-radius: 6px;
-           background-color: ${colors[color].headerBackground};
-           color: ${colors[color].headerColor};
+           background-color: ${colors[data.color].headerBackground};
+           color: ${colors[data.color].headerColor};
            margin: 20px;
          }
          
@@ -167,62 +167,49 @@ module.exports =function generateHTML(data, color) {
           } 
          }
       </style>
-      <body>
+    </head>
+    <body>
       <div class="wrapper">
-         <div class="photo-header">
-            <img src=${data.avatar_url} alt="Profile picture" />
-            <h1>Hi!</h1>
-            <h1>
-            ${data.name ? 'My name is ' + data.name + '!' : 'I am anonymous!'}
-            </h1>
-            <h5>
-            ${data.company ? 'Currently @ ' + data.company : ''}
-            </h5>
-            <nav class="links-nav">
-               <a class="nav-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/place/${data.location}"><i class="fas fa-location-arrow"></i> ${data.location}</a>
-               <a class="nav-link" target="_blank" rel="noopener noreferrer" href=${data.html_url}><i class="fab fa-github-alt"></i> GitHub</a>
-               <a class="nav-link" target="_blank" rel="noopener noreferrer" href=${data.blog}><i class="fas fa-rss"></i> Blog</a>
-            </nav>
-         </div>
-         <main>
-            <div class="container">
+        <div class="photo-header">
+          <img src="${data.img}" alt="developer image">
+          <h1>Hi!</h1>
+          <h2>My name is ${data.name}</h2>
+          <h4>Currently @ ${data.company}</h4>
+          <div class="links-nav">
+              <a class="nav-link" href="https://www.google.ca/maps/@${data.location}"><i class="fas fa-location-arrow"></i> ${data.location}</a>
+              <a class="nav-link" href="${data.gitHubLink}"><i class="fab fa-github-alt"></i> GitHub</a>
+              <a class="nav-link" href="${data.blogLink}"><i class="fas fa-rss"></i> Blog</a>
+          </div>
+        </div>
+        <main>
+          <div class="container">
+            <h3 class="col">${data.bio}</h3>
             <div class="row">
-               <div class="col">
-                  <h3>${data.bio}</h3>
-               </div>
-               </div>
-               <div class="row">
-               <div class="col">
-                  <div class="card">
-                    <h3>Public Repositories</h3>
-                    <h4>${data.public_repos}</h4>
-                  </div>
-               </div>
-                <div class="col">
-                <div class="card">
-                  <h3>Followers</h3>
-                  <h4>${data.followers}</h4>
-                </div>
-               </div>
-               </div>
-               <div class="row">
-               <div class="col">
-               <div class="card">
-                  <h3>GitHub Stars</h3>
-                  <h4>${data.stars}</h4>
-                  </div>
-               </div>
-                <div class="col">
-                <div class="card">
-                  <h3>Following</h3>
-                  <h4>${data.following}</h4>
-                  </div>
-               </div>
-               </div>
+              <div class="card col">
+                <h3>Public Repositories</h3>
+                <h4>${data.repNum}</h4>
+              </div>
+              <div class="card col">
+                <h3>Followers</h3>
+                <h4>${data.followerNum}</h4>
+              </div>
             </div>
-         </main>
+            <div class="row">
+              <div class="card col">
+                <h3>GitHub Stars</h3>
+                <h4>${data.starsNum}</h4>
+              </div>
+              <div class="card col">
+                <h3>Following</h3>
+                <h4>${data.followingNum}</h4>
+              </div>
+            </div>
+          </div>
+        </main>
       </div>
-   </body>
-      </html>`
-}
+    </body>
+  </html>`
+        }
 
+module.exports.generateHTML = generateHTML;
+module.exports.colors = colors;

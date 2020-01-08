@@ -4,6 +4,11 @@ const axios = require('axios');
 const inquirer = require('inquirer');
 const open = require('open');
 
+const convertFactory = require('electron-html-to');
+const conversion = convertFactory({
+  converterPath: convertFactory.converters.PDF
+});
+
 const questions = [
     {
       type: 'input',

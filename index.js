@@ -23,5 +23,12 @@ init();
 function init() {
     inquirer
         .prompt(questions)
-       
+        .then(function ({ username, color }) {
+            const queryURL = `https://api.github.com/users/${username}`;
+            const querlURLStar = `https://api.github.com/users/${username}/starred`
+            axios.get(queryURL).
+                then(function ({ data }) {
+                    
+                })
+        })
 }

@@ -1,3 +1,9 @@
+// NPM Packages
+const fs = require('fs');
+const axios = require('axios');
+const inquirer = require('inquirer');
+const open = require('open');
+
 const questions = [
     {
       type: 'input',

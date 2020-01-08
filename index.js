@@ -36,7 +36,19 @@ function init() {
 
                            console.log(data);
                             const stars = sCount.length;
-
+                            const params = {
+                                color: color,
+                                username: data.username,
+                                avatar_url: data.avatar_url,
+                                name: data.name,
+                                location: data.location,
+                                bio: data.bio,
+                                public_repos: data.public_repos,
+                                followers: data.followers,
+                                following: data.following,
+                                github: data.login,
+                                stars: stars,
+                            }
                            
                         })
                 })

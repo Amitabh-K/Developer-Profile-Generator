@@ -56,12 +56,21 @@ async function gitHubData (queryUrl, repoStars) {
         GHStars.push(repo.GHStars_count);
     }
 
-  }
+    feed.img = data.data.avatar_url;
+    feed.name = data.data.name;
+    feed.company = data.data.company;
+    feed.location = data.data.location;
+    feed.gitHubLink = data.data.html_url;
+    feed.blogLink = data.data.blog;
+    feed.bio = data.data.bio;
+    feed.repNum = data.data.public_repos;
+    feed.followerNum = data.data.followers;
+    feed.followingNum = data.data.following;
 
 // try and catch statement that knows how to handle the situation that the github user has no stars, and takes that situation to set the stars to 0
     
   
-
+}
 
 // function ties in the color list to the color list in provided generateHTML.js file
 

@@ -9,7 +9,6 @@ function init() {
     startPDFGenerator();
 }
 
-
 // Take Username and Color as an input using inquirer
 async function startPDFGenerator () {
 
@@ -29,12 +28,21 @@ async function startPDFGenerator () {
         
     });
 
-    
-}
-
 // Store Github  json and user input
 
 
+    let name = username.name;
+    const queryUrl = `https://api.github.com/users/${name}`
+    const repoStars = `https://api.github.com/users/${name}/starred`
+    let GHFeed = await gitHubData(queryUrl, repoStars);
+
+    GHFeed.color = validateColor(color.color);
+
+    const html = genHTML.generateHTML(GHFeed);
+    const filename = GHFeed.name;
+
+    generatePDF(filename, html);
+}
 
 //Match n map the github json with objects listed in generateHTML.js file
 

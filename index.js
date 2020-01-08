@@ -28,7 +28,17 @@ function init() {
             const querlURLStar = `https://api.github.com/users/${username}/starred`
             axios.get(queryURL).
                 then(function ({ data }) {
-                    
+                    axios.get(querlURLStar)
+                        .then(function (res) {
+                            const sCount = res.data.map(element => {
+                                return element.stargazers_count
+                            });
+
+                           console.log(data);
+                            const stars = sCount.length;
+
+                           
+                        })
                 })
         })
 }
